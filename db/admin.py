@@ -30,7 +30,7 @@ class MannvorschlagInline (admin.TabularInline):
 	#readonly_fields = ['frau','protokoll','bemerkungen','erfolg','datum_vorschlag_erfolgt']
 class KandidatAdmin (admin.ModelAdmin):
 	list_display = ('name', 'geburtsdatum', 'stadt')
-	list_filter = ['geschlecht']
+	list_filter = ['geschlecht','status']
 	search_fields = ['name']
 	inlines = [MannvorschlagInline, FrauvorschlagInline]
 	def get_formsets(self, request, obj=None):
