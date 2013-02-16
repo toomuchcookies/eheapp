@@ -1,4 +1,4 @@
-from db.models import Kandidat, Interview, Mitglied, Protokoll, Teilnehmer, Paarvorschlag
+from EheApp.db.models import Kandidat, Interview, Mitglied, Protokoll, Teilnehmer, Paarvorschlag
 from django.contrib import admin
 
 class InterviewAdmin (admin.ModelAdmin):
