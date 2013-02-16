@@ -34,7 +34,7 @@ class KandidatAdmin (admin.ModelAdmin):
 	search_fields = ['name']
 	inlines = [MannvorschlagInline, FrauvorschlagInline]
 	def get_formsets(self, request, obj=None):
-		if obj.geschlecht:
+		if obj:
 			if obj.geschlecht=='M':
 				for inline in self.inline_instances:
 					if isinstance(inline, FrauvorschlagInline):
