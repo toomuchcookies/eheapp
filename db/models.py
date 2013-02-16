@@ -12,12 +12,13 @@ class Kandidat (models.Model):
 	beschreibung = models.TextField (blank=True)
 	vorgeschlagen_von = models.ForeignKey ('Mitglied')
 	geschlecht = models.CharField(max_length=1, choices=(('M', 'Mann'), ('F', 'Frau')))
+	status = models.IntegerField (choices=((-1, 'deaktiv'), (0, 'wartet auf Interview'), (1, 'interviewt'), (2, 'in Verhandlung'), (3, 'verheiratet')))
 	
 	def __unicode__(self):
 		return self.name
 	
 	class Meta:
-		verbose_name_plural = "kandidaten"
+		verbose_name_plural = "Kandidaten"
 
 class Interview (models.Model):
 	kandidat = models.ForeignKey ('Kandidat')
