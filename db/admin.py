@@ -34,12 +34,13 @@ class KandidatAdmin (admin.ModelAdmin):
 	search_fields = ['name']
 	inlines = [MannvorschlagInline, FrauvorschlagInline]
 	def get_formsets(self, request, obj=None):
-		if obj.geschlecht=='M':
-			for inline in self.inline_instances:
-				if isinstance(inline, FrauvorschlagInline):
-					yield inline.get_formset(request, obj)
-		else:
-			for inline in self.inline_instances:
-				if isinstance(inline, MannvorschlagInline):
-					yield inline.get_formset(request, obj)
+		if obj.geschlecht:
+			if obj.geschlecht=='M':
+				for inline in self.inline_instances:
+					if isinstance(inline, FrauvorschlagInline):
+						yield inline.get_formset(request, obj)
+			else:
+				for inline in self.inline_instances:
+					if isinstance(inline, MannvorschlagInline):
+						yield inline.get_formset(request, obj)
 admin.site.register(Kandidat, KandidatAdmin)
